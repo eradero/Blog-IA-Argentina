@@ -61,7 +61,7 @@ def main():
         # 3. Descargar imagen de Pollinations.ai
         slug = slugify(generated_data["title"])
         image_prompt = urllib.parse.quote(generated_data["image_prompt"])
-        image_url = f"https://image.pollinations.ai/prompt/{image_prompt}?width=1024&height=512&nologo=true"
+        image_url = f"https://image.pollinations.ai/prompt/{image_prompt}?nologo=true"
         image_path = f"/images/{slug}.jpg"
         full_image_path = os.path.join("../frontend/public", f"images/{slug}.jpg")
         
