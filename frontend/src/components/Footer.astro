@@ -6,6 +6,9 @@ const today = new Date();
 	&copy; {today.getFullYear()} Enrique Radero. All rights reserved.
 	<div class="social-links">
 	</div>
+	<div class="footer-links">
+		<a href="/privacy">Política de Privacidad y Cookies</a>
+	</div>
 </footer>
 <style>
 	footer {
@@ -31,5 +34,18 @@ const today = new Date();
 	}
 	.social-links a:hover {
 		color: var(--accent);
+	}
+	.footer-links {
+		margin-top: 1.5rem;
+		font-size: 0.9em;
+	}
+	.footer-links a {
+		color: var(--text-secondary);
+		text-decoration: none;
+		transition: color 0.2s;
+	}
+	.footer-links a:hover {
+		color: var(--accent);
+		text-decoration: underline;
 	}
 </style>
