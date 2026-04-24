@@ -2,20 +2,34 @@ import feedparser
 from bs4 import BeautifulSoup
 import requests
 
-RSS_URL = "https://news.google.com/rss/search?q=Inteligencia+Artificial+Argentina&hl=es-419&gl=AR&ceid=AR:es-419"
+RSS_FEEDS = [
+    # Noticias de IA en Argentina
+    "https://news.google.com/rss/search?q=Inteligencia+Artificial+Argentina&hl=es-419&gl=AR&ceid=AR:es-419",
+    # Noticias de IA en el mundo (en español)
+    "https://news.google.com/rss/search?q=Inteligencia+Artificial&hl=es-419&gl=AR&ceid=AR:es-419",
+    # Noticias globales de AI en inglés (más variedad)
+    "https://news.google.com/rss/search?q=artificial+intelligence+breakthrough&hl=en-US&gl=US&ceid=US:en",
+]
 
 def fetch_latest_news():
-    """Fetches the latest news from the RSS feed."""
-    print("Buscando noticias en Google News...")
-    feed = feedparser.parse(RSS_URL)
+    """Fetches the latest news from multiple RSS feeds for variety."""
+    print("Buscando noticias en Google News (Argentina + Mundo)...")
     
     articles = []
-    for entry in feed.entries[:5]: # Get top 5 recent
-        articles.append({
-            "title": entry.title,
-            "link": entry.link,
-            "published": entry.published,
-        })
+    seen_links = set()
+    
+    for rss_url in RSS_FEEDS:
+        feed = feedparser.parse(rss_url)
+        for entry in feed.entries[:3]:  # Top 3 de cada feed
+            if entry.link not in seen_links:
+                seen_links.add(entry.link)
+                articles.append({
+                    "title": entry.title,
+                    "link": entry.link,
+                    "published": entry.published,
+                })
+    
+    print(f"Total de noticias únicas encontradas: {len(articles)}")
     return articles
 
 def extract_article_content(url):
