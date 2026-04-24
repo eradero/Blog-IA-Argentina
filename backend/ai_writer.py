@@ -28,6 +28,8 @@ def generate_blog_post(original_title, original_content):
         (Aquí el nuevo título atractivo)
         [DESCRIPCION]
         (Una breve descripción de 1 línea para SEO)
+        [PROMPT_IMAGEN]
+        (Escribe UNA SOLA oración en INGLÉS describiendo la escena principal para generarla en IA. Debe ser estilo cartoon. Ejemplo: 'A cartoonish illustration of a robot drinking mate in Buenos Aires, vibrant colors')
         [CONTENIDO]
         (Aquí el cuerpo completo del artículo en Markdown. Usa párrafos, negritas y subtítulos si es necesario).
         """
@@ -40,12 +42,14 @@ def generate_blog_post(original_title, original_content):
         
         # Parse the custom format
         title = text.split('[TITULO]')[1].split('[DESCRIPCION]')[0].strip()
-        description = text.split('[DESCRIPCION]')[1].split('[CONTENIDO]')[0].strip()
+        description = text.split('[DESCRIPCION]')[1].split('[PROMPT_IMAGEN]')[0].strip()
+        image_prompt = text.split('[PROMPT_IMAGEN]')[1].split('[CONTENIDO]')[0].strip()
         content = text.split('[CONTENIDO]')[1].strip()
         
         return {
             "title": title,
             "description": description,
+            "image_prompt": image_prompt,
             "content": content
         }
         

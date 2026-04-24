@@ -1,6 +1,8 @@
 import json
 import os
 import re
+import urllib.parse
+import requests
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -56,14 +58,34 @@ def main():
             print("Fallo la generación de IA. Saltando...")
             continue
             
-        # 3. Guardar en el frontend (Astro format)
+        # 3. Descargar imagen de Pollinations.ai
         slug = slugify(generated_data["title"])
+        image_prompt = urllib.parse.quote(generated_data["image_prompt"])
+        image_url = f"https://image.pollinations.ai/prompt/{image_prompt}?width=1024&height=512&nologo=true"
+        image_path = f"/images/{slug}.jpg"
+        full_image_path = os.path.join("../frontend/public", f"images/{slug}.jpg")
+        
+        try:
+            print(f"Descargando imagen para: {slug}")
+            os.makedirs(os.path.dirname(full_image_path), exist_ok=True)
+            img_response = requests.get(image_url, timeout=20)
+            if img_response.status_code == 200:
+                with open(full_image_path, "wb") as f:
+                    f.write(img_response.content)
+            else:
+                image_path = "" # Fallback if image fails
+        except Exception as e:
+            print(f"Error descargando imagen: {e}")
+            image_path = ""
+            
+        # 4. Guardar en el frontend (Astro format)
         today = datetime.now().strftime("%b %d %Y")
         
         markdown_content = f"""---
 title: '{generated_data["title"].replace("'", "''")}'
 description: '{generated_data["description"].replace("'", "''")}'
 pubDate: '{today}'
+heroImage: '{image_path}'
 ---
 
 {generated_data["content"]}
