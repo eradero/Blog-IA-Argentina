@@ -58,24 +58,39 @@ def main():
             print("Fallo la generación de IA. Saltando...")
             continue
             
-        # 3. Descargar imagen de Pollinations.ai
+        # 3. Descargar imagen con Nano Banana (Gemini Imagen 3)
         slug = slugify(generated_data["title"])
-        image_prompt = urllib.parse.quote(generated_data["image_prompt"])
-        image_url = f"https://image.pollinations.ai/prompt/{image_prompt}?nologo=true"
+        image_prompt = generated_data["image_prompt"]
         image_path = f"/images/{slug}.jpg"
         full_image_path = os.path.join("../frontend/public", f"images/{slug}.jpg")
         
         try:
-            print(f"Descargando imagen para: {slug}")
+            print(f"Generando imagen Nano Banana (Imagen 3) para: {slug}")
             os.makedirs(os.path.dirname(full_image_path), exist_ok=True)
-            img_response = requests.get(image_url, timeout=20)
-            if img_response.status_code == 200:
-                with open(full_image_path, "wb") as f:
-                    f.write(img_response.content)
-            else:
-                image_path = "" # Fallback if image fails
+            
+            from google import genai
+            api_key = os.environ.get("GEMINI_API_KEY")
+            client = genai.Client(api_key=api_key)
+            
+            # Use Nano Banana / Imagen 3
+            result = client.models.generate_images(
+                model='imagen-3.0-generate-001',
+                prompt=image_prompt,
+                config=dict(
+                    number_of_images=1,
+                    aspect_ratio="16:9",
+                    output_mime_type="image/jpeg",
+                )
+            )
+            
+            generated_image = result.generated_images[0]
+            with open(full_image_path, "wb") as f:
+                f.write(generated_image.image.image_bytes)
+                
+            print("Imagen Nano Banana generada exitosamente.")
+            
         except Exception as e:
-            print(f"Error descargando imagen: {e}")
+            print(f"Error generando imagen con IA: {e}")
             image_path = ""
             
         # 4. Guardar en el frontend (Astro format)
