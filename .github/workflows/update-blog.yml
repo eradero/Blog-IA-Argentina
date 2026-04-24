@@ -23,7 +23,7 @@ jobs:
       run: |
         cd backend
         python -m pip install --upgrade pip
-        pip install feedparser google-generativeai requests beautifulsoup4
+        pip install feedparser google-genai requests beautifulsoup4 python-dotenv
 
     - name: Ejecutar script de IA y Scraper
       env:
