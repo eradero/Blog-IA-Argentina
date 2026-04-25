@@ -110,9 +110,11 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<hr />
 					</div>
 					<slot />
-                    <div style="margin-top: 4rem;">
-                        <hr />
-                        <h2 style="text-align: center; margin-bottom: 2rem;">Comentarios</h2>
+                    
+                    <div class="comments-container" style="margin-top: 5rem; padding: 2rem; border-top: 4px solid #74acdf; background: rgba(0,0,0,0.02); border-radius: 12px;">
+                        <h2 style="text-align: center; margin-bottom: 2rem; color: #74acdf; font-family: system-ui, sans-serif; text-transform: uppercase; letter-spacing: 2px;">
+                            Comunidad IA Argentina
+                        </h2>
                         <script src="https://utteranc.es/client.js"
                                 repo="eradero/Blog-IA-Argentina"
                                 issue-term="pathname"
@@ -122,6 +124,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
                                 async>
                         </script>
                     </div>
+
 
 				</div>
 			</article>
