@@ -58,24 +58,42 @@ def main():
             print("Fallo la generación de IA. Saltando...")
             continue
             
-        # 3. Descargar imagen (Emulando Nano Banana con modelo Flux fotorrealista)
+        # 3. Determinar imagen (1. Real de la noticia, 2. Internet, 3. IA)
         slug = slugify(generated_data["title"])
-        image_prompt = urllib.parse.quote(generated_data["image_prompt"] + ", high quality, realistic, detailed")
-        image_url = f"https://image.pollinations.ai/prompt/{image_prompt}?model=flux&nologo=true&width=1024&height=576"
+        
+        # Capa 1: Imagen de la noticia
+        final_image_url = image_url
+        
+        # Capa 2: Buscar en internet si la capa 1 falló
+        if not final_image_url:
+            print(f"No se encontró imagen en la noticia. Buscando en internet para: {article['title']}")
+            from scraper import search_internet_image
+            final_image_url = search_internet_image(article["title"])
+            
+        # Capa 3: Generar con IA si las anteriores fallaron
+        if not final_image_url:
+            print(f"No se encontró imagen real. Generando imagen con IA para: {slug}")
+            image_prompt = urllib.parse.quote(generated_data["image_prompt"] + ", high quality, realistic, detailed")
+            final_image_url = f"https://image.pollinations.ai/prompt/{image_prompt}?model=flux&nologo=true&width=1024&height=576"
+            
         image_path = f"/images/{slug}.jpg"
         full_image_path = os.path.join("../frontend/public", f"images/{slug}.jpg")
         
         try:
-            print(f"Descargando imagen fotorrealista (Flux) para: {slug}")
+            print(f"Descargando imagen final: {final_image_url}")
             os.makedirs(os.path.dirname(full_image_path), exist_ok=True)
-            img_response = requests.get(image_url, timeout=20)
+            # Headers to avoid blocks
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+            img_response = requests.get(final_image_url, timeout=30, headers=headers)
+            
             if img_response.status_code == 200:
                 with open(full_image_path, "wb") as f:
                     f.write(img_response.content)
             else:
+                print(f"Fallo descarga. Usando placeholder.")
                 image_path = "" # Fallback if image fails
         except Exception as e:
-            print(f"Error descargando imagen: {e}")
+            print(f"Error gestionando imagen: {e}")
             image_path = ""
             
         # 4. Guardar en el frontend (Astro format)
