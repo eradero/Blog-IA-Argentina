@@ -2,7 +2,7 @@
 title: 'Desafío y Oportunidad: Scioli y el Impacto de la IA en el Capital Humano Argentino'
 description: 'Análisis de la disertación de Daniel Scioli sobre la intersección de la Inteligencia Artificial y el desarrollo del capital humano en Argentina.'
 pubDate: 'Apr 24 2026'
-heroImage: ''
+heroImage: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1024'
 ---
 
 La Inteligencia Artificial (IA) ha dejado de ser una promesa futurista para convertirse en una fuerza transformadora que redefine industrias, mercados laborales y la esencia misma del trabajo. En este contexto de cambio acelerado, comprender y adaptarse a su impacto en el capital humano se ha vuelto una prioridad ineludible para cualquier nación que aspire a la prosperidad. Recientemente, Daniel Scioli, figura prominente de la política argentina, aportó su visión en un foro centrado precisamente en esta crucial intersección: el capital humano y la IA.

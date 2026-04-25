@@ -2,7 +2,7 @@
 title: 'Argentina ante la Revolución IA: Daniel Scioli y el Desafío del Capital Humano en un Foro Clave'
 description: 'Daniel Scioli analiza el impacto de la Inteligencia Artificial en el capital humano y el futuro laboral de Argentina en un foro clave sobre tecnología.'
 pubDate: 'Apr 24 2026'
-heroImage: '/images/argentina-ante-la-revoluci-n-ia-daniel-scioli-y-el-desaf-o-del-capital-humano-en-un-foro-clave.jpg'
+heroImage: 'https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1024'
 ---
 
 La Inteligencia Artificial (IA) ha dejado de ser una promesa futurista para convertirse en una realidad transformadora que redefine industrias, mercados laborales y, en esencia, el futuro de nuestras sociedades. En este contexto de cambio acelerado, la discusión sobre cómo la IA impacta en el **capital humano** se vuelve crucial. Recientemente, el exgobernador y actual funcionario **Daniel Scioli** participó en un foro de gran relevancia, abordando precisamente este eje en el ámbito argentino.

@@ -2,7 +2,7 @@
 title: 'Inteligencia Artificial y Capital Humano: La Agenda de Transformación Argentina'
 description: 'Daniel Scioli disertó en un foro clave sobre cómo la IA redefinirá el capital humano y el empleo en Argentina, impulsando la capacitación y la adaptación.'
 pubDate: 'Apr 24 2026'
-heroImage: ''
+heroImage: 'https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=1024'
 ---
 
 Como periodista especializado en la intersección de la tecnología y la sociedad, he seguido de cerca cómo la Inteligencia Artificial (IA) está remodelando el panorama laboral global y, por supuesto, el argentino. Recientemente, un evento clave volvió a poner de manifiesto la urgencia de abordar esta transformación: un foro sobre **capital humano e Inteligencia Artificial** donde participó **Daniel Scioli**, figura relevante en la esfera política nacional.
