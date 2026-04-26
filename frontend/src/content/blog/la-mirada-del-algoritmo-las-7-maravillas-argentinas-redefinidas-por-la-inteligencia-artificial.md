@@ -2,7 +2,7 @@
 title: 'La Mirada del Algoritmo: Las 7 Maravillas Argentinas Redefinidas por la Inteligencia Artificial'
 description: 'Exploramos cómo la IA selecciona las 7 maravillas de Argentina, revelando una perspectiva innovadora sobre el patrimonio nacional.'
 pubDate: 'Apr 24 2026'
-heroImage: '/images/la-mirada-del-algoritmo-las-7-maravillas-argentinas-redefinidas-por-la-inteligencia-artificial.jpg'
+heroImage: 'https://images.unsplash.com/photo-1610191956361-ec8371802931?q=80&w=1024'
 ---
 
 Como periodista especializado en Inteligencia Artificial y tecnología, siempre me fascina ver cómo estas herramientas transforman nuestra percepción del mundo. Y cuando se trata de un país tan vasto y diverso como Argentina, la pregunta de "las mejores" es un debate eterno. Recientemente, un titular me llamó la atención: "¿Cuáles son las mejores siete maravillas de Argentina según la inteligencia artificial?". Esta premisa, aunque presentada de forma concisa, abre un campo de análisis profundo sobre cómo un algoritmo, desprovisto de emociones pero rico en datos, podría evaluar nuestro patrimonio.

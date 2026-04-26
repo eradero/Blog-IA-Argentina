@@ -2,7 +2,7 @@
 title: 'Cuando la IA Despide: El Lado Oscuro de la Automatización Laboral y sus Implicancias Globales'
 description: 'Analizamos cómo la inteligencia artificial, lejos de solo optimizar, está siendo activamente empleada para reducir plantillas laborales a nivel global.'
 pubDate: 'Apr 26 2026'
-heroImage: 'https://images.unsplash.com/photo-1675271591211-126ad94e495d?q=80&w=1024'
+heroImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1024'
 ---
 
 # Cuando la IA Despide: El Lado Oscuro de la Automatización Laboral y sus Implicancias Globales

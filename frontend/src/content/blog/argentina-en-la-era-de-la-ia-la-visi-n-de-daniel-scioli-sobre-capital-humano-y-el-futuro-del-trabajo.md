@@ -2,7 +2,7 @@
 title: 'Argentina en la Era de la IA: La Visión de Daniel Scioli sobre Capital Humano y el Futuro del Trabajo'
 description: 'Analizamos la disertación de Daniel Scioli sobre la integración de la Inteligencia Artificial y el desarrollo del capital humano en Argentina, explorando desafíos y oportunidades clave.'
 pubDate: 'Apr 26 2026'
-heroImage: '/images/argentina-en-la-era-de-la-ia-la-visi-n-de-daniel-scioli-sobre-capital-humano-y-el-futuro-del-trabajo.jpg'
+heroImage: 'https://images.unsplash.com/photo-1589909202802-8f4abbce7502?q=80&w=1024'
 ---
 
 ---
