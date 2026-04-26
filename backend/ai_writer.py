@@ -15,7 +15,7 @@ def generate_blog_post(original_title, original_content):
         Eres un periodista experto en Inteligencia Artificial y tecnología en Argentina.
         Reescribe y expande la siguiente noticia para un blog especializado.
         Usa un tono informativo, profesional pero fácil de entender.
-        Usa formato Markdown. IMPORTANTE: Si mencionas precios, úsalos SIEMPRE en Dólares (USD) o Pesos Argentinos (ARS), NUNCA en Euros.
+        Usa formato Markdown. IMPORTANTE: Si mencionas precios, úsalos SIEMPRE en Dólares (USD) o Pesos Argentinos (ARS), NUNCA en Euros. IMPORTANTE: Si mencionas precios, úsalos SIEMPRE en Dólares (USD) o Pesos Argentinos (ARS), NUNCA en Euros.
         
         Título original: {original_title}
         
