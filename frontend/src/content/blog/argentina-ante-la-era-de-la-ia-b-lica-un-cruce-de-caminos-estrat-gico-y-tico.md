@@ -2,7 +2,7 @@
 title: 'Argentina ante la Era de la IA Bélica: Un Cruce de Caminos Estratégico y Ético'
 description: 'Exploramos cómo la inteligencia artificial redefine la guerra global y qué implicaciones estratégicas, éticas y tecnológicas tiene para Argentina.'
 pubDate: 'Apr 26 2026'
-heroImage: 'https://images.unsplash.com/photo-1675271591211-126ad94e495d?q=80&w=1024'
+heroImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1024'
 ---
 
 En el vibrante ecosistema de la tecnología global, donde la **Inteligencia Artificial (IA)** promete revolucionar desde la medicina hasta la logística, hay un campo donde su avance genera tanto asombro como profunda preocupación: la defensa y la guerra. Desde nuestro rincón en Argentina, como observadores y actores del pulso tecnológico, no podemos ignorar este debate que resuena en los pasillos de los think tanks militares y los centros de innovación más importantes del mundo. ¿Cómo se posiciona Argentina frente a la creciente militarización de la IA? ¿Es un dilema estratégico, ético, económico o una combinación de todos ellos?
