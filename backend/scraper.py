@@ -42,10 +42,21 @@ def extract_article_content(url):
         soup = BeautifulSoup(response.content, 'html.parser')
         paragraphs = soup.find_all('p')
         content = "\n".join([p.get_text() for p in paragraphs if len(p.get_text()) > 20])
-        return content
+        
+        image_url = ""
+        og_image = soup.find("meta", property="og:image")
+        if og_image and og_image.get("content") and is_valid_image(og_image.get("content")):
+            image_url = og_image.get("content")
+        else:
+            for img in soup.find_all("img"):
+                src = img.get("src")
+                if src and src.startswith("http") and is_valid_image(src):
+                    image_url = src
+                    break
+        return content, image_url
     except Exception as e:
         print(f"Error extrayendo {url}: {e}")
-        return ""
+        return "", ""
 
 
 def is_valid_image(url):

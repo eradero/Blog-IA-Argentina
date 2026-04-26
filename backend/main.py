@@ -67,7 +67,7 @@ def main():
         print(f"Procesando nuevo artículo: {article['title']}")
         
         # 1. Extraer contenido de la URL
-        content = extract_article_content(article["link"])
+        content, image_url = extract_article_content(article["link"])
         if not content:
             print("Advertencia: No se pudo extraer contenido. Usando solo el título.")
             content = "Contenido no disponible para extracción automática."
