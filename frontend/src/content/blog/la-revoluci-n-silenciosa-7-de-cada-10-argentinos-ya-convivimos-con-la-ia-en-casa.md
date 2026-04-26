@@ -2,7 +2,7 @@
 title: 'La Revolución Silenciosa: 7 de Cada 10 Argentinos Ya Convivimos con la IA en Casa'
 description: 'Descubre cómo la inteligencia artificial se ha integrado masivamente en los hogares argentinos, transformando la vida cotidiana.'
 pubDate: 'Apr 23 2026'
-heroImage: 'https://images.unsplash.com/photo-1558002038-103792e17734?auto=format&fit=crop&q=80&w=1024'
+heroImage: 'https://images.unsplash.com/photo-1558002038-103792e17734'
 ---
 
 # La Inteligencia Artificial Ya Es Parte del Hogar Argentino: Una Mirada a la Adopción Masiva

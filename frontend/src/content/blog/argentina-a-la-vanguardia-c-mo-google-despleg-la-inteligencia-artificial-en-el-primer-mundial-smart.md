@@ -2,7 +2,7 @@
 title: 'Argentina a la Vanguardia: Cómo Google Desplegó la Inteligencia Artificial en el Primer Mundial "Smart"'
 description: 'Análisis de cómo Google eligió a Argentina como epicentro para la implementación de inteligencia artificial en la Copa del Mundo, marcando un hito tecnológico.'
 pubDate: 'Apr 23 2026'
-heroImage: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=1024'
+heroImage: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2'
 ---
 
 En el vibrante cruce entre la pasión futbolística y la innovación tecnológica, Argentina ha demostrado ser mucho más que una cuna de talentos para el campo de juego. Recientemente, el país se posicionó como un **laboratorio clave para Google en la implementación de inteligencia artificial (IA)** durante la pasada Copa del Mundo. Este hito no solo redefine cómo experimentamos el deporte más popular del planeta, sino que también consolida la posición de Argentina como un hub tecnológico relevante en la región.

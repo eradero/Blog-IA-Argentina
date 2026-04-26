@@ -2,7 +2,7 @@
 title: 'Revolución Silenciosa en la IA: Un Avance que Recorta el Consumo Energético 100 Veces y Dispara la Precisión'
 description: 'Descubre cómo un hito en la IA promete reducir el consumo de energía 100 veces y aumentar la precisión, redefiniendo el futuro de la tecnología.'
 pubDate: 'Apr 26 2026'
-heroImage: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1024'
+heroImage: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e'
 ---
 
 Como periodista especializado en Inteligencia Artificial y tecnología, pocas noticias me impactan tanto como aquellas que abordan los desafíos fundamentales de esta disciplina. Y hoy, la ciencia nos trae una revelación que bien podría reescribir las reglas del juego: un avance en IA que promete **reducir el consumo energético cien veces** y, al mismo tiempo, **incrementar su precisión**. Publicado originalmente por *Science Daily*, este hallazgo no es solo una mejora incremental; es un salto cuántico.
