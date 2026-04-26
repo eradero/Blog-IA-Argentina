@@ -38,7 +38,7 @@ def is_duplicate(title, history):
     stop_words = {'de', 'la', 'en', 'el', 'un', 'una', 'con', 'por', 'para', 'que', 'y', 'los', 'las'}
     title_words = {w for w in title_words if w not in stop_words}
     
-    for item in history:
+    for item in history + [{"title": f.replace("-", " ")} for f in os.listdir(BLOG_POSTS_DIR) if f.endswith(".md")]:
         if isinstance(item, dict) and item.get("title"):
             h_words = set(re.findall(r"\w+", item["title"].lower()))
             h_words = {w for w in h_words if w not in stop_words}
@@ -110,8 +110,8 @@ def main():
                 with open(full_image_path, "wb") as f:
                     f.write(img_response.content)
             else:
-                print(f"Fallo descarga. Usando placeholder.")
-                image_path = "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1024" if image fails
+                print(f"Fallo descarga. Usando placeholder de seguridad.")
+                image_path = "https://images.unsplash.com/photo-1675271591211-126ad94e495d?q=80&w=1024"
         except Exception as e:
             print(f"Error gestionando imagen: {e}")
             image_path = ""
