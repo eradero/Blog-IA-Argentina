@@ -2,7 +2,7 @@
 title: 'Elon Musk y el "Riesgo del 1000%": La IA como Pilar Económico Vital para EE.UU. (¿Y Argentina?)'
 description: 'Elon Musk advierte sobre el riesgo de bancarrota de EE.UU. sin avances en IA, abriendo un debate crucial sobre la soberanía tecnológica y el futuro económico global.'
 pubDate: 'Apr 26 2026'
-heroImage: '/images/elon-musk-y-el-riesgo-del-1000-la-ia-como-pilar-econ-mico-vital-para-ee-uu-y-argentina.jpg'
+heroImage: 'https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=1024'
 ---
 
 Como periodista especializado en Inteligencia Artificial y tecnología, siempre he seguido de cerca las declaraciones de Elon Musk. Sus palabras rara vez pasan desapercibidas y, en esta ocasión, ha lanzado una advertencia que resuena con la fuerza de un megáfono en un concierto de rock: sin un avance significativo en IA, Estados Unidos se enfrenta a un "riesgo de bancarrota del 1000%". Una cifra que, más allá de su literalidad, subraya la magnitud de su preocupación.

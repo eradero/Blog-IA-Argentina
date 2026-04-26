@@ -2,7 +2,7 @@
 title: 'El Futuro de la IA en Medios y Creatividad: Por Qué Argentina Observa Atentamente la Regulación Chilena'
 description: 'Chile avanza con una ley de IA que podría redefinir el futuro de medios y creativos, y Argentina observa de cerca sus implicaciones.'
 pubDate: 'Apr 26 2026'
-heroImage: '/images/el-futuro-de-la-ia-en-medios-y-creatividad-por-qu-argentina-observa-atentamente-la-regulaci-n-chilena.jpg'
+heroImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1024'
 ---
 
 ---
