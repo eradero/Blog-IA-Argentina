@@ -2,8 +2,8 @@ name: Auto-Update Blog IA Argentina
 
 on:
   schedule:
-    # Ejecutar cada 6 horas (minuto 45) para no chocar con otros blogs
-    - cron: '45 */6 * * *'
+    # Ejecutar dos veces al día: 8 AM y 8 PM (Hora Argentina / UTC-3)
+    - cron: '0 11,23 * * *'
   workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
 
 jobs:
