@@ -20,7 +20,7 @@ body {
 	padding: 0;
 	text-align: left;
 	background-color: #0a0a0f;
-	background-image: url('/background-ai.png');
+	background-image: url('../assets/images/background-ai.png');
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
