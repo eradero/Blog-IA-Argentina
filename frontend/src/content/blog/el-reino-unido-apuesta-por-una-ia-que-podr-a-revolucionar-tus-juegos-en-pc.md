@@ -6,7 +6,7 @@ heroImage: '/images/el-reino-unido-apuesta-por-una-ia-que-podr-a-revolucionar-tu
 affiliateLink: 'https://www.amazon.com/s?k=pc+gamer&tag=blogseradero-20'
 ---
 
-Che, ¡atención, gamers de PC! Se viene algo GORDO que podría cambiar para siempre la forma en que jugás. El gobierno del Reino Unido, ni más ni menos, le está metiendo muchísima guita a una empresa que está desarrollando una Inteligencia Artificial con un poder que suena a ciencia ficción: ¡es capaz de "descubrir nuevo conocimiento"! Y sí, esto tiene implicaciones enormes para el futuro de los videojuegos.
+¡atención, gamers de PC! Se viene algo GORDO que podría cambiar para siempre la forma en que jugás. El gobierno del Reino Unido, ni más ni menos, le está metiendo muchísima guita a una empresa que está desarrollando una Inteligencia Artificial con un poder que suena a ciencia ficción: ¡es capaz de "descubrir nuevo conocimiento"! Y sí, esto tiene implicaciones enormes para el futuro de los videojuegos.
 
 ### **¿Una IA que "descubre conocimiento"? ¿Qué onda con eso?**
 
