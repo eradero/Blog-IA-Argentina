@@ -40,4 +40,4 @@ jobs:
         git config --global user.email 'action@github.com'
         git add .
         # Solo hace commit si hay cambios reales
-        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update: Nuevas noticias de IA agregadas" && git push)
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update: Nuevas noticias de IA agregadas" && git pull --rebase && git push)
