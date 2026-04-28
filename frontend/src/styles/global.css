@@ -20,7 +20,7 @@ body {
 	padding: 0;
 	text-align: left;
 	background-color: #05050a;
-	background-image: linear-gradient(rgba(10, 10, 15, 0.5), rgba(10, 10, 15, 0.5)), url('../assets/images/ia-background.jpg');
+	background-image: url('/Blog-IA-Argentina/images/ia-background.jpg');
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
