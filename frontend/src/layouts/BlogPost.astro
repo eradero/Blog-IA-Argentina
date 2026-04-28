@@ -8,7 +8,7 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, affiliateLink } = Astro.props;
 ---
 
 <html lang="es-AR">
@@ -110,6 +110,17 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<hr />
 					</div>
 					<slot />
+                    
+                    {affiliateLink && (
+                        <div class="affiliate-cta" style="margin-top: 3rem; padding: 2rem; border: 2px dashed #00e5ff; border-radius: 16px; text-align: center; background: rgba(0, 229, 255, 0.05);">
+                            <h3 style="margin-bottom: 1rem; color: #00e5ff;">¡Potenciá tu Setup con IA!</h3>
+                            <p style="margin-bottom: 1.5rem; color: #ffffff;">Encontrá el mejor hardware, componentes y gadgets tecnológicos en Amazon.</p>
+                            <a href={affiliateLink} target="_blank" rel="noopener noreferrer" 
+                               style="display: inline-block; background: #00e5ff; color: #000; padding: 12px 24px; border-radius: 30px; font-weight: bold; text-decoration: none; transition: transform 0.2s ease; box-shadow: 0 4px 12px rgba(0, 229, 255, 0.4);">
+                                🛒 Ver en Amazon
+                            </a>
+                        </div>
+                    )}
                     
                     <div class="comments-container" style="margin-top: 5rem; padding: 2rem; border-top: 4px solid #74acdf; background: rgba(0,0,0,0.02); border-radius: 12px;">
                         <h2 style="text-align: center; margin-bottom: 2rem; color: #74acdf; font-family: system-ui, sans-serif; text-transform: uppercase; letter-spacing: 2px;">
