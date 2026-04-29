@@ -60,7 +60,7 @@ def is_duplicate(title, history):
             if not title_words: continue
             overlap = len(intersection) / len(title_words)
             
-            if overlap > 0.5: # Si el 50% de las palabras del título nuevo ya existen en uno viejo
+            if overlap > 0.3: # Si el 50% de las palabras del título nuevo ya existen en uno viejo
                 return True
     return False
 def main():
@@ -102,6 +102,13 @@ def main():
         if not final_image_url:
             print(f"No se encontró imagen en la noticia. Buscando en internet para: {article['title']}")
             from scraper import search_internet_image
+            
+            # Verificación de relevancia (Evitar logos de sitios, ads, etc)
+            if final_image_url:
+                from ai_writer import verify_image_relevance
+                if not verify_image_relevance(final_image_url, generated_data["title"]):
+                    print(f"Imagen original rechazada por falta de relevancia: {final_image_url}")
+                    final_image_url = ""
             final_image_url = search_internet_image(article["title"])
             
         # Capa 3: Generar con IA si las anteriores fallaron
