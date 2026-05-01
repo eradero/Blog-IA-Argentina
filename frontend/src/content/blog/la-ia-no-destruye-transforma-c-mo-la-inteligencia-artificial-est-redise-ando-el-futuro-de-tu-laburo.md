@@ -2,7 +2,7 @@
 title: '¡La IA no destruye, TRANSFORMA! Cómo la Inteligencia Artificial está Rediseñando el Futuro de tu Laburo'
 description: 'Preparate para entender cómo la revolución de la IA está cambiando el mercado laboral, creando nuevas oportunidades y desafíos. ¡Tu futuro empieza hoy!'
 pubDate: 'Apr 30 2026'
-heroImage: 'https://images.unsplash.com/photo-1675271591211-126ad94e495d?q=80&w=1024'
+heroImage: 'https://plus.unsplash.com/premium_photo-1680608979589-e9349ed066d5?q=80&w=1024'
 affiliateLink: 'https://www.amazon.com/s?k=inteligencia+artificial+juegos+tecnologia&language=es_US&tag=blogseradero-20'
 ---
 
