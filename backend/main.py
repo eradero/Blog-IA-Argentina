@@ -1,171 +1,38 @@
-import json
 import os
-import re
-import urllib.parse
-import requests
-from datetime import datetime
+import json
+import time
 from dotenv import load_dotenv
-
-load_dotenv() # Load variables from .env file
-
-from scraper import fetch_latest_news, extract_article_content
+from scraper import fetch_latest_news, search_unsplash_image
 from ai_writer import generate_blog_post
 
-HISTORY_FILE = "history.json"
-BLOG_POSTS_DIR = "../frontend/src/content/blog"
+load_dotenv()
+
+HISTORY_FILE = "backend/history.json"
 
 def load_history():
-    if os.path.exists(HISTORY_FILE):
-        with open(HISTORY_FILE, "r") as f:
-            data = json.load(f)
-        return [item if isinstance(item, dict) else {"link": item, "title": ""} for item in data]
-    return []
+        if os.path.exists(HISTORY_FILE):
+                    with open(HISTORY_FILE, "r") as f:
+                                    return json.load(f)
+                            return []
 
-def save_history(history):
-    with open(HISTORY_FILE, "w") as f:
-        json.dump(history, f, indent=4)
+    def save_history(history):
+            with open(HISTORY_FILE, "w") as f:
+                        json.dump(history, f, indent=4)
 
-def slugify(text):
-    text = text.lower()
-    text = re.sub(r'[^a-z0-9]+', '-', text)
-    return text.strip('-')
+        def main():
+                news = fetch_latest_news()
+                history = load_history()
+                for article in news:
+                            if article['link'] not in history:
+                                            blog_post = generate_blog_post(article)
+                                            if blog_post:
+                                                                image_query = article['title'].split(':')[0]
+                                                                image_url = search_unsplash_image(image_query)
+                                                                if image_url:
+                                                                                        blog_post['image'] = image_url
+                                                                                    history.append(article['link'])
+                                                                save_history(history)
+                                                                time.sleep(5)
 
-
-
-def is_duplicate(title, history):
-    title_words = set(re.findall(r"\w+", title.lower()))
-    if len(title_words) < 4: return False
-    
-    # Ignorar palabras comunes
-    stop_words = {'de', 'la', 'en', 'el', 'un', 'una', 'con', 'por', 'para', 'que', 'y', 'los', 'las', 'sobre', 'del', 'con', 'para'}
-    title_words = {w for w in title_words if w not in stop_words}
-    
-    # 1. Verificar contra archivos en el disco (por si history.json no está al día)
-    existing_titles = []
-    if os.path.exists(BLOG_POSTS_DIR):
-        for f in os.listdir(BLOG_POSTS_DIR):
-            if f.endswith(".md"):
-                existing_titles.append(f.replace("-", " ").replace(".md", ""))
-    
-    # 2. Combinar historial y archivos físicos
-    check_list = history + [{"title": t} for t in existing_titles]
-    
-    for item in check_list:
-        if isinstance(item, dict) and item.get("title"):
-            h_words = set(re.findall(r"\w+", item["title"].lower()))
-            h_words = {w for w in h_words if w not in stop_words}
-            if not h_words: continue
-            
-            intersection = title_words.intersection(h_words)
-            if not title_words: continue
-            overlap = len(intersection) / len(title_words)
-            
-            if overlap > 0.3: # Si el 50% de las palabras del título nuevo ya existen en uno viejo
-                return True
-    return False
-def main():
-    print("Iniciando proceso automático de blog...")
-    history = load_history()
-    
-    articles = fetch_latest_news()
-    
-    if not articles:
-        print("No se encontraron artículos en el RSS.")
-        return
-        
-    for article in articles:
-        if any(isinstance(h, dict) and h.get("link") == article["link"] for h in history) or is_duplicate(article["title"], history):
-            print(f"Saltando artículo ya procesado: {article['title']}")
-            continue
-            
-        print(f"Procesando nuevo artículo: {article['title']}")
-        
-        # 1. Extraer contenido de la URL
-        content, image_url = extract_article_content(article["link"])
-        if not content:
-            print("Advertencia: No se pudo extraer contenido. Usando solo el título.")
-            content = "Contenido no disponible para extracción automática."
-            
-        # 2. Usar IA para generar el post
-        generated_data = generate_blog_post(article["title"], content)
-        if not generated_data:
-            print("Fallo la generación de IA. Saltando...")
-            continue
-            
-        # 3. Determinar imagen (1. Real de la noticia, 2. Internet, 3. IA)
-        slug = slugify(generated_data["title"])
-        
-        # Capa 1: Imagen de la noticia
-        final_image_url = image_url
-        
-        # Capa 2: Buscar en internet si la capa 1 falló
-        if not final_image_url:
-            print(f"No se encontró imagen en la noticia. Buscando en internet para: {article['title']}")
-            from scraper import search_internet_image
-            
-            # Verificación de relevancia (Evitar logos de sitios, ads, etc)
-            if final_image_url:
-                from ai_writer import verify_image_relevance
-                if not verify_image_relevance(final_image_url, generated_data["title"]):
-                    print(f"Imagen original rechazada por falta de relevancia: {final_image_url}")
-                    final_image_url = ""
-            final_image_url = search_internet_image(article["title"])
-            
-        # Capa 3: Generar con IA si las anteriores fallaron
-        if not final_image_url:
-            print(f"No se encontró imagen real. Generando imagen con IA para: {slug}")
-            image_prompt = urllib.parse.quote(generated_data["image_prompt"] + ", high quality, realistic, detailed")
-            final_image_url = f"https://image.pollinations.ai/prompt/{image_prompt}?model=flux&nologo=true&width=1024&height=576"
-            
-        image_path = f"/images/{slug}.jpg"
-        full_image_path = os.path.join("../frontend/public", f"images/{slug}.jpg")
-        
-        try:
-            print(f"Descargando imagen final: {final_image_url}")
-            os.makedirs(os.path.dirname(full_image_path), exist_ok=True)
-            # Headers to avoid blocks
-            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
-            img_response = requests.get(final_image_url, timeout=30, headers=headers)
-            
-            if img_response.status_code == 200:
-                with open(full_image_path, "wb") as f:
-                    f.write(img_response.content)
-            else:
-                print(f"Fallo descarga. Usando placeholder de seguridad.")
-                image_path = "https://images.unsplash.com/photo-1675271591211-126ad94e495d?q=80&w=1024"
-        except Exception as e:
-            print(f"Error gestionando imagen: {e}")
-            image_path = ""
-            
-        # 4. Guardar en el frontend (Astro format)
-        today = datetime.now().strftime("%b %d %Y")
-        
-        markdown_content = f"""---
-title: '{generated_data["title"].replace("'", "''")}'
-description: '{generated_data["description"].replace("'", "''")}'
-pubDate: '{today}'
-heroImage: '{image_path}'
-affiliateLink: '{generated_data["affiliateLink"]}'
----
-
-{generated_data["content"]}
-"""
-        
-        # Make sure directory exists
-        os.makedirs(BLOG_POSTS_DIR, exist_ok=True)
-        file_path = os.path.join(BLOG_POSTS_DIR, f"{slug}.md")
-        
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(markdown_content)
-            
-        print(f"Guardado exitosamente: {file_path}")
-        
-        # 4. Actualizar historial
-        history.append({"link": article["link"], "title": article["title"]})
-        save_history(history)
-        
-
-    print("Proceso finalizado.")
-
-if __name__ == "__main__":
-    main()
+                                if __name__ == "__main__":
+                                        main()
