@@ -3,99 +3,45 @@ from bs4 import BeautifulSoup
 import requests
 import urllib.parse
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 RSS_FEEDS = [
-    # Noticias de IA en Argentina
-    "https://news.google.com/rss/search?q=Inteligencia+Artificial+Argentina&hl=es-419&gl=AR&ceid=AR:es-419",
-    # Noticias de IA en el mundo (en español)
-    "https://news.google.com/rss/search?q=Inteligencia+Artificial&hl=es-419&gl=AR&ceid=AR:es-419",
-    # Noticias globales de AI en inglés (más variedad)
-    "https://news.google.com/rss/search?q=artificial+intelligence+breakthrough&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=Inteligencia+Artificial+Argentina&hl=es-419&gl=AR&ceid=AR:es-419",
+        "https://news.google.com/rss/search?q=Inteligencia+Artificial&hl=es-419&gl=AR&ceid=AR:es-419",
+        "https://news.google.com/rss/search?q=artificial+intelligence+breakthrough&hl=en-US&gl=US&ceid=US:en"
 ]
 
+def search_unsplash_image(query):
+        """Busca una imagen real en Unsplash basada en el query."""
+        access_key = os.getenv("UNSPLASH_ACCESS_KEY")
+        if not access_key:
+                    return None
+                url = f"https://api.unsplash.com/search/photos?query={query}&per_page=1&client_id={access_key}"
+    try:
+                response = requests.get(url)
+                if response.status_code == 200:
+                                data = response.json()
+                                if data['results']:
+                                                    return data['results'][0]['urls']['regular']
+    except Exception as e:
+        print(f"Error: {e}")
+    return None
+
 def fetch_latest_news():
-    """Fetches the latest news from multiple RSS feeds for variety."""
-    print("Buscando noticias en Google News (Argentina + Mundo)...")
-    
-    articles = []
+        articles = []
     seen_links = set()
-    
     for rss_url in RSS_FEEDS:
-        feed = feedparser.parse(rss_url)
-        for entry in feed.entries[:3]:  # Top 3 de cada feed
-            if entry.link not in seen_links:
-                seen_links.add(entry.link)
-                articles.append({
-                    "title": entry.title,
-                    "link": entry.link,
-                    "published": entry.published,
-                })
-    
-    print(f"Total de noticias únicas encontradas: {len(articles)}")
-    return articles
-
-def extract_article_content(url):
-    """Attempts to extract the main text content from a URL."""
-    try:
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
-        response = requests.get(url, timeout=10, headers=headers)
-        soup = BeautifulSoup(response.content, 'html.parser')
-        paragraphs = soup.find_all('p')
-        content = "\n".join([p.get_text() for p in paragraphs if len(p.get_text()) > 20])
-        
-        image_url = ""
-        og_image = soup.find("meta", property="og:image")
-        if og_image and og_image.get("content") and is_valid_image(og_image.get("content")):
-            image_url = og_image.get("content")
-        else:
-            for img in soup.find_all("img"):
-                src = img.get("src")
-                if src and src.startswith("http") and is_valid_image(src):
-                    image_url = src
-                    break
-        return content, image_url
-    except Exception as e:
-        print(f"Error extrayendo {url}: {e}")
-        return "", ""
-
-
-def is_valid_image(url):
-    if not url: return False
-    url_lower = url.lower()
-    
-    # Ignorar imágenes de Google News (miniaturas de baja calidad)
-    if "googleusercontent.com" in url_lower or "gstatic.com" in url_lower:
-        return False
-        
-    # Ignorar imágenes que parecen ser miniaturas por su URL (ej: s150, w300)
-    import re
-    if re.search(r'[=s](1|2|3)00', url_lower): # s100, s200, s300 etc
-        return False
-
-    bad_words = ['logo', 'avatar', 'icon', 'profile', 'default', 'placeholder', 'blank', 'header-bg', 'newsletter', 'button']
-    return not any(word in url_lower for word in bad_words)
-
-def search_internet_image(query, extra_term=""):
-    """Searches for an image on the internet (Bing) as a fallback."""
-    try:
-        search_query = f"{query} gameplay screenshot official art".strip()
-        print(f"Buscando imagen en internet para: {search_query}")
-        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"}
-        url = f"https://www.bing.com/images/search?q={urllib.parse.quote(search_query)}"
-        response = requests.get(url, headers=headers, timeout=10)
-        soup = BeautifulSoup(response.text, "html.parser")
-        
-        # Bing images are in <a> tags with class "iusc"
-        for a in soup.find_all("a", class_="iusc"):
-            m = a.get("m")
-            if m:
-                data = json.loads(m)
-                img_url = data.get("murl")
-                if img_url and img_url.startswith("http") and is_valid_image(img_url):
-                    import re
-                    clean_url = re.sub(r'^https?://', '', img_url)
-                    return f"https://wsrv.nl/?url={clean_url}"
-        return ""
-    except Exception as e:
-        print(f"Error buscando imagen en internet: {e}")
-        return ""
+                feed = feedparser.parse(rss_url)
+                for entry in feed.entries[:10]:
+                                if entry.link not in seen_links:
+                                                    articles.append({
+                                                                            "title": entry.title,
+                                                                            "link": entry.link,
+                                                                            "published": entry.published,
+                                                    })
+                                                    seen_links.add(entry.link)
+                                        return articles
+                    
