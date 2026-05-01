@@ -2,7 +2,7 @@
 title: '¡La IA se pone en acción! Forrester predice el gran salto hacia la Inteligencia Artificial física'
 description: 'Forrester, una de las consultoras tecnológicas más importantes, acaba de soltar una bomba: la próxima gran revolución de la IA no va a ser solo digital, ¡sino que va a tomar cuerpo! Preparáte para un futuro donde la Inteligencia Artificial interactúa directamente con nuestro mundo físico.'
 pubDate: 'May 01 2026'
-heroImage: '/images/la-ia-se-pone-en-acci-n-forrester-predice-el-gran-salto-hacia-la-inteligencia-artificial-f-sica.jpg'
+heroImage: 'https://images.unsplash.com/photo-1647427060118-4911c9821b82?q=80&w=1024'
 affiliateLink: 'https://www.amazon.com/s?k=Inteligencia+Artificial+juegos&tag=blogseradero-20'
 ---
 
