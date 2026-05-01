@@ -2,7 +2,7 @@
 title: '¡Notición! Armenia, EE. UU. y un salto cuántico en IA que tenés que conocer'
 description: 'Descubrí cómo Armenia está por convertirse en un *hub* global de Inteligencia Artificial con el respaldo de Estados Unidos. ¡Una movida estratégica que va a dar que hablar en el mundo tech!'
 pubDate: 'May 01 2026'
-heroImage: 'https://images.unsplash.com/photo-1675271591211-126ad94e495d?q=80&w=1024'
+heroImage: 'https://images.unsplash.com/photo-1624429864127-dd35a85b0aad?q=80&w=1024'
 affiliateLink: 'https://www.amazon.com/s?k=libros+inteligencia+artificial+desarrollo&tag=blogseradero-20'
 ---
 
